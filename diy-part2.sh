@@ -27,4 +27,5 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 #istore
 git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci package/nas-packages-luci
+git clone --depth=1 -b master https://github.com/linkease/nas-packages package/nas-packages
 git clone --depth=1 -b main https://github.com/linkease/istore package/istore
