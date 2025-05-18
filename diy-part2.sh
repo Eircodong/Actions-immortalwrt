@@ -16,16 +16,6 @@ sed -i 's/192.168.1.1/192.168.100.1/g' package/base-files/files/bin/config_gener
 # Modify default theme
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-light/Makefile
 
-# Git稀疏克隆，只克隆指定目录到本地
-function git_sparse_clone() {
-  branch="$1" repourl="$2" && shift 2
-  git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
-  repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
-  cd $repodir && git sparse-checkout set $@
-  mv -f $@ ../package
-  cd .. && rm -rf $repodir
-}
-
 # 删除插件
 rm -rf feeds/packages/net/adguardhome
 
@@ -47,5 +37,5 @@ git clone --depth=1 -b master https://github.com/linkease/nas-packages package/n
 git clone --depth=1 -b main https://github.com/linkease/istore package/istore
 
 # uugamebooster
-git_sparse_clone openwrt-23.05 https://github.com/coolsnowwolf/luci applications/luci-app-uugamebooster
-git_sparse_clone master https://github.com/coolsnowwolf/packages net/uugamebooster
+git clone https://github.com/kiddin9/luci-app-uugamebooster package/luci-app-uugamebooster
+git clone https://github.com/Eircodong/packages-uugamebooster package/uugamebooster
