@@ -35,7 +35,3 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci package/nas-packages-luci
 git clone --depth=1 -b master https://github.com/linkease/nas-packages package/nas-packages
 git clone --depth=1 -b main https://github.com/linkease/istore package/istore
-
-# uugamebooster
-git clone https://github.com/kiddin9/luci-app-uugamebooster package/luci-app-uugamebooster
-git clone https://github.com/Eircodong/packages-uugamebooster package/uugamebooster
