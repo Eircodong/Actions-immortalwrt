@@ -32,6 +32,7 @@ rm -rf feeds/packages/net/adguardhome
 # 添加插件
 git clone https://github.com/sirpdboy/luci-app-lucky.git package/lucky
 git clone --depth=1 -b master https://github.com/xiaoxiao29/luci-app-adguardhome package/luci-app-adguardhome
+git clone https://github.com/sirpdboy/luci-app-taskplan package/luci-app-taskplan
 
 # mosdns
 find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
