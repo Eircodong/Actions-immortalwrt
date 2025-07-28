@@ -19,10 +19,21 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-l
 # 删除插件
 rm -rf feeds/packages/net/adguardhome
 
+#稀疏克隆
+function git_sparse_clone() {
+  branch="$1" repourl="$2" && shift 2
+  git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
+  repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
+  cd $repodir && git sparse-checkout set $@
+  mv -f $@ ../package
+  cd .. && rm -rf $repodir
+}
+
 # 添加插件
 git clone https://github.com/sirpdboy/luci-app-lucky.git package/lucky
 git clone --depth=1 -b master https://github.com/xiaoxiao29/luci-app-adguardhome package/luci-app-adguardhome
 git clone https://github.com/sirpdboy/luci-app-taskplan package/luci-app-taskplan
+git_sparse_clone main https://github.com/linkease/istore-packages luci-app-uugamebooster uugamebooster
 
 # mosdns
 find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
